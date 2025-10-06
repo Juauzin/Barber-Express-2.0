@@ -41,13 +41,13 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">Summary</h1>
+  <h1 className="text-xl font-bold text-white">Resumo</h1>
       </div>
 
       <div className="p-6 space-y-6">
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-white mb-2">Review Your Appointment</h2>
-          <p className="text-gray-400">Please confirm all details before booking</p>
+          <h2 className="text-2xl font-bold text-white mb-2">Revise Seu Agendamento</h2>
+          <p className="text-gray-400">Por favor confirme todos os detalhes antes de confirmar</p>
         </div>
 
         <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800 space-y-4">
@@ -58,7 +58,7 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
               className="w-16 h-16 rounded-full object-cover"
             />
             <div>
-              <p className="text-gray-400 text-sm">Barber</p>
+              <p className="text-gray-400 text-sm">Barbeiro</p>
               <h3 className="text-white font-semibold text-lg">{barber?.name}</h3>
               <div className="flex items-center gap-1 mt-1">
                 {[...Array(5)].map((_, i) => (
@@ -77,7 +77,7 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
           <div className="flex items-start gap-3">
             <Calendar className="text-cyan-400 mt-1" size={20} />
             <div className="flex-1">
-              <p className="text-gray-400 text-sm">Date</p>
+              <p className="text-gray-400 text-sm">Data</p>
               <p className="text-white font-medium">{formatDate(date)}</p>
             </div>
           </div>
@@ -85,16 +85,16 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
           <div className="flex items-start gap-3">
             <Clock className="text-cyan-400 mt-1" size={20} />
             <div className="flex-1">
-              <p className="text-gray-400 text-sm">Time</p>
+              <p className="text-gray-400 text-sm">Horário</p>
               <p className="text-white font-medium">{time}</p>
-              <p className="text-gray-500 text-sm">Duration: {totalDuration} minutes</p>
+              <p className="text-gray-500 text-sm">Duração: {totalDuration} minutos</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
             <Scissors className="text-cyan-400 mt-1" size={20} />
             <div className="flex-1">
-              <p className="text-gray-400 text-sm mb-2">Services</p>
+              <p className="text-gray-400 text-sm mb-2">Serviços</p>
               <div className="space-y-2">
                 {selectedServices.map((service) => (
                   <div key={service.id} className="flex justify-between items-center bg-gray-800 rounded-lg p-3">
@@ -110,7 +110,7 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
             <div className="flex items-center justify-between bg-gradient-to-r from-cyan-900/30 to-cyan-800/20 rounded-xl p-4 border border-cyan-700/30">
               <div className="flex items-center gap-2">
                 <DollarSign className="text-cyan-400" size={20} />
-                <span className="text-white font-semibold">Total Price</span>
+                <span className="text-white font-semibold">Preço Total</span>
               </div>
               <span className="text-cyan-400 font-bold text-2xl">${totalPrice.toFixed(2)}</span>
             </div>
@@ -122,13 +122,13 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
             onClick={onConfirm}
             className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-4 rounded-xl transition-colors duration-200"
           >
-            Confirm Appointment
+            Confirmar Agendamento
           </button>
           <button
             onClick={onBack}
             className="w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-4 rounded-xl transition-colors duration-200"
           >
-            Go Back
+            Voltar
           </button>
         </div>
       </div>

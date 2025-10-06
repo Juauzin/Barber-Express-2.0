@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
+import { ChevronLeft, Calendar } from 'lucide-react';
 import { Service } from '../../types';
 
 interface ScheduleDateTimeProps {
@@ -63,7 +63,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">Schedule Your Cut</h1>
+        <h1 className="text-xl font-bold text-white">Agende Seu Corte</h1>
       </div>
 
       <div className="p-6 space-y-6">
@@ -72,7 +72,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
             <img src={barber?.photoUrl} alt={barber?.name} className="w-12 h-12 rounded-full object-cover" />
             <div>
               <h3 className="text-white font-semibold">{barber?.name}</h3>
-              <p className="text-gray-400 text-sm">Your selected barber</p>
+              <p className="text-gray-400 text-sm">Barbeiro selecionado</p>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Calendar className="text-cyan-400" size={20} />
-            <h2 className="text-white font-semibold">Select Date</h2>
+            <h2 className="text-white font-semibold">Selecionar Data</h2>
           </div>
           <div className="grid grid-cols-3 gap-3">
             {dates.map((date) => (
@@ -104,9 +104,9 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
           </div>
         </div>
 
-        {selectedDate && (
+            {selectedDate && (
           <div>
-            <h2 className="text-white font-semibold mb-3">Select Time</h2>
+            <h2 className="text-white font-semibold mb-3">Selecionar Horário</h2>
             <div className="grid grid-cols-4 gap-2">
               {availableHours.map((hour) => (
                 <button
@@ -126,7 +126,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
         )}
 
         <div>
-          <h2 className="text-white font-semibold mb-3">Select Services</h2>
+          <h2 className="text-white font-semibold mb-3">Selecionar Serviços</h2>
           <div className="space-y-3">
             {services.map((service) => (
               <button
@@ -141,7 +141,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
                 <div className="flex items-center justify-between">
                   <div className="text-left">
                     <h3 className="text-white font-medium mb-1">{service.name}</h3>
-                    <p className="text-gray-400 text-sm">{service.durationMinutes} minutes</p>
+                    <p className="text-gray-400 text-sm">{service.durationMinutes} minutos</p>
                   </div>
                   <div className="text-right">
                     <p className="text-cyan-400 font-bold">${service.price.toFixed(2)}</p>
@@ -155,7 +155,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
         {selectedServices.length > 0 && (
           <div className="bg-gradient-to-r from-cyan-900/30 to-cyan-800/20 rounded-xl p-4 border border-cyan-700/30">
             <div className="flex justify-between items-center">
-              <span className="text-white font-semibold">Total Price:</span>
+              <span className="text-white font-semibold">Preço Total:</span>
               <span className="text-cyan-400 font-bold text-xl">${totalPrice.toFixed(2)}</span>
             </div>
           </div>
@@ -170,7 +170,7 @@ export const ScheduleDateTime: React.FC<ScheduleDateTimeProps> = ({ barberId, on
               : 'bg-gray-800 text-gray-500 cursor-not-allowed'
           }`}
         >
-          Continue to Summary
+          Continuar para Resumo
         </button>
       </div>
     </div>

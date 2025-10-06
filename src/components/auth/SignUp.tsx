@@ -29,12 +29,12 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
     setError('');
 
     if (!isPasswordValid) {
-      setError('Password does not meet requirements');
+      setError('A senha não atende aos requisitos');
       return;
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError('As senhas não coincidem');
       return;
     }
 
@@ -55,8 +55,8 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-          <p className="text-gray-400">Join us today</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Criar Conta</h1>
+          <p className="text-gray-400">Junte-se a nós hoje</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-gray-900 rounded-2xl p-8 shadow-xl">
@@ -67,7 +67,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
           )}
 
           <div className="mb-4">
-            <label className="block text-gray-300 mb-2 text-sm font-medium">Full Name</label>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">Nome Completo</label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
               <input
@@ -75,14 +75,14 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full bg-gray-800 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                placeholder="Your full name"
+                placeholder="Seu nome completo"
                 required
               />
             </div>
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-300 mb-2 text-sm font-medium">Email</label>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">E-mail</label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
               <input
@@ -90,14 +90,14 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-gray-800 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                placeholder="your@email.com"
+                placeholder="seu@email.com"
                 required
               />
             </div>
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-300 mb-2 text-sm font-medium">Phone</label>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">Telefone</label>
             <div className="relative">
               <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
               <input
@@ -112,7 +112,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-300 mb-2 text-sm font-medium">Password</label>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">Senha</label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
               <input
@@ -120,22 +120,22 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-gray-800 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                placeholder="Create a password"
+                placeholder="Crie uma senha"
                 required
               />
             </div>
             {password && (
               <div className="mt-3 p-3 bg-gray-800 rounded-lg space-y-2">
-                <RequirementItem met={passwordRequirements.minLength} text="At least 8 characters" />
-                <RequirementItem met={passwordRequirements.hasLetter} text="Contains letters" />
-                <RequirementItem met={passwordRequirements.hasNumber} text="Contains numbers" />
-                <RequirementItem met={passwordRequirements.hasSpecial} text="Contains special character" />
+                <RequirementItem met={passwordRequirements.minLength} text="Pelo menos 8 caracteres" />
+                <RequirementItem met={passwordRequirements.hasLetter} text="Contém letras" />
+                <RequirementItem met={passwordRequirements.hasNumber} text="Contém números" />
+                <RequirementItem met={passwordRequirements.hasSpecial} text="Contém caractere especial" />
               </div>
             )}
           </div>
 
           <div className="mb-6">
-            <label className="block text-gray-300 mb-2 text-sm font-medium">Confirm Password</label>
+            <label className="block text-gray-300 mb-2 text-sm font-medium">Confirmar Senha</label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
               <input
@@ -143,7 +143,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="w-full bg-gray-800 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                placeholder="Confirm your password"
+                placeholder="Confirme sua senha"
                 required
               />
             </div>
@@ -153,7 +153,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
             type="submit"
             className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition-colors duration-200 mb-4"
           >
-            Create Account
+            Criar Conta
           </button>
 
           <div className="text-center">
@@ -162,7 +162,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
               onClick={onSwitchToLogin}
               className="text-cyan-400 hover:text-cyan-300 text-sm"
             >
-              Already have an account? Sign In
+              Já tem uma conta? Entrar
             </button>
           </div>
         </form>

@@ -49,27 +49,27 @@ export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-b-3xl p-6 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-white mb-1">My Schedule</h1>
-            <p className="text-gray-400">Manage your appointments</p>
+            <h1 className="text-2xl font-bold text-white mb-1">Minha Agenda</h1>
+            <p className="text-gray-400">Gerencie seus agendamentos</p>
           </div>
           <button
             onClick={onManageSchedule}
             className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
           >
             <Calendar size={18} />
-            <span>Manage</span>
+            <span>Gerenciar</span>
           </button>
         </div>
 
         <div className="grid grid-cols-3 gap-3 mt-6">
           <div className="bg-gray-800/50 rounded-xl p-3">
-            <p className="text-gray-400 text-xs mb-1">Today</p>
+            <p className="text-gray-400 text-xs mb-1">Hoje</p>
             <p className="text-white font-bold text-xl">
               {barberAppointments.filter(a => a.date === new Date().toISOString().split('T')[0]).length}
             </p>
           </div>
           <div className="bg-gray-800/50 rounded-xl p-3">
-            <p className="text-gray-400 text-xs mb-1">This Week</p>
+            <p className="text-gray-400 text-xs mb-1">Esta Semana</p>
             <p className="text-white font-bold text-xl">{barberAppointments.length}</p>
           </div>
           <div className="bg-gray-800/50 rounded-xl p-3">
@@ -87,8 +87,8 @@ export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule
             <div className="bg-gray-900 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
               <Calendar className="text-gray-600" size={48} />
             </div>
-            <h2 className="text-xl font-semibold text-white mb-2">No Appointments Scheduled</h2>
-            <p className="text-gray-400">Your upcoming appointments will appear here.</p>
+            <h2 className="text-xl font-semibold text-white mb-2">Nenhum Agendamento</h2>
+            <p className="text-gray-400">Seus próximos agendamentos aparecerão aqui.</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -116,12 +116,12 @@ export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule
                           <div className="space-y-2 pl-11">
                             <div className="flex items-center gap-2">
                               <User className="text-gray-500" size={16} />
-                              <span className="text-gray-400 text-sm">Customer:</span>
+                              <span className="text-gray-400 text-sm">Cliente:</span>
                               <span className="text-white font-medium">{getCustomerName(appointment.customerId)}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Clock className="text-gray-500" size={16} />
-                              <span className="text-gray-400 text-sm">Service:</span>
+                              <span className="text-gray-400 text-sm">Serviço:</span>
                               <span className="text-white font-medium">{getServiceName(appointment.serviceId)}</span>
                             </div>
                           </div>

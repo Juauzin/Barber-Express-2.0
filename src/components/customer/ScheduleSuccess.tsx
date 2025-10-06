@@ -17,9 +17,9 @@ export const ScheduleSuccess: React.FC<ScheduleSuccessProps> = ({ onViewAppointm
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-white mb-3">Appointment Scheduled!</h1>
+          <h1 className="text-3xl font-bold text-white mb-3">Agendamento Confirmado!</h1>
           <p className="text-gray-400 text-lg">
-            Your appointment has been successfully booked. We look forward to seeing you!
+            Seu agendamento foi realizado com sucesso. Estamos ansiosos para vê-lo!
           </p>
         </div>
 
@@ -28,13 +28,13 @@ export const ScheduleSuccess: React.FC<ScheduleSuccessProps> = ({ onViewAppointm
             onClick={onViewAppointments}
             className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-4 rounded-xl transition-colors duration-200"
           >
-            View Your Appointments
+            Ver Meus Agendamentos
           </button>
           <button
             onClick={onGoHome}
             className="w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-4 rounded-xl transition-colors duration-200"
           >
-            Back to Home
+            Voltar para Início
           </button>
         </div>
       </div>

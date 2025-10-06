@@ -12,7 +12,7 @@ export const Favorites: React.FC<FavoritesProps> = ({ onBack }) => {
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">Favorites</h1>
+  <h1 className="text-xl font-bold text-white">Favoritos</h1>
       </div>
 
       <div className="p-6">
@@ -20,9 +20,9 @@ export const Favorites: React.FC<FavoritesProps> = ({ onBack }) => {
           <div className="bg-gray-900 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
             <Heart className="text-gray-600" size={48} />
           </div>
-          <h2 className="text-xl font-semibold text-white mb-2">No Favorites Yet</h2>
+          <h2 className="text-xl font-semibold text-white mb-2">Ainda sem Favoritos</h2>
           <p className="text-gray-400">
-            Mark your favorite barbers and services to find them quickly!
+            Marque seus barbeiros e serviços favoritos para encontrá-los mais rápido!
           </p>
         </div>
       </div>

@@ -10,9 +10,9 @@ export const MyProfile: React.FC<MyProfileProps> = ({ onBack }) => {
   const { currentUser, logout } = useApp();
 
   const menuItems = [
-    { icon: User, label: 'Edit Profile', action: () => alert('Edit profile feature coming soon!') },
-    { icon: Lock, label: 'Change Password', action: () => alert('Change password feature coming soon!') },
-    { icon: Bell, label: 'Notifications', action: () => alert('Notifications feature coming soon!') },
+    { icon: User, label: 'Editar Perfil', action: () => alert('Recurso de editar perfil em breve!') },
+    { icon: Lock, label: 'Alterar Senha', action: () => alert('Recurso de alterar senha em breve!') },
+    { icon: Bell, label: 'Notificações', action: () => alert('Recurso de notificações em breve!') },
   ];
 
   return (
@@ -21,7 +21,7 @@ export const MyProfile: React.FC<MyProfileProps> = ({ onBack }) => {
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">My Profile</h1>
+  <h1 className="text-xl font-bold text-white">Meu Perfil</h1>
       </div>
 
       <div className="p-6 space-y-6">
@@ -73,7 +73,7 @@ export const MyProfile: React.FC<MyProfileProps> = ({ onBack }) => {
           className="w-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 font-semibold py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2"
         >
           <LogOut size={20} />
-          <span>Logout</span>
+          <span>Sair</span>
         </button>
 
         <div className="text-center pt-4">

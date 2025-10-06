@@ -21,6 +21,7 @@ const initialUsers: User[] = [
   { id: 1, name: 'João Nogueira', email: 'joao@gmail.com', password: '123', type: 'customer', phone: '(11) 98765-4321', photoUrl: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200' },
   { id: 2, name: 'Jardel', email: 'jardel@barber.com', password: '123', type: 'barber', photoUrl: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=200' },
   { id: 3, name: 'Caio', email: 'caio@barber.com', password: '123', type: 'barber', photoUrl: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200' },
+  { id: 3, name: 'João Roberto', email: 'marccopollo16@gmail.com', password: '123', type: 'barber', photoUrl: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200' },
 ];
 
 const initialBarbers: Barber[] = [

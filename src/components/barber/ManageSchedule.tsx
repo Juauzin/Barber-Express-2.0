@@ -62,19 +62,19 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">Manage Schedule</h1>
+        <h1 className="text-xl font-bold text-white">Gerenciar Agenda</h1>
       </div>
 
       <div className="p-6 space-y-6">
         <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
           <div className="flex items-center gap-2 mb-4">
             <Plus className="text-cyan-400" size={20} />
-            <h2 className="text-white font-semibold text-lg">Add Available Day</h2>
+            <h2 className="text-white font-semibold text-lg">Adicionar Dia Disponível</h2>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-gray-300 mb-2 text-sm font-medium">Select Date</label>
+              <label className="block text-gray-300 mb-2 text-sm font-medium">Selecionar Data</label>
               <input
                 type="date"
                 value={selectedDate}
@@ -86,7 +86,7 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-300 mb-2 text-sm font-medium">Start Time</label>
+                <label className="block text-gray-300 mb-2 text-sm font-medium">Hora de Início</label>
                 <select
                   value={startTime}
                   onChange={(e) => setStartTime(e.target.value)}
@@ -100,7 +100,7 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
               </div>
 
               <div>
-                <label className="block text-gray-300 mb-2 text-sm font-medium">End Time</label>
+                <label className="block text-gray-300 mb-2 text-sm font-medium">Hora de Término</label>
                 <select
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
@@ -123,7 +123,7 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
                   : 'bg-gray-800 text-gray-500 cursor-not-allowed'
               }`}
             >
-              Add Schedule
+              Adicionar Agenda
             </button>
           </div>
         </div>
@@ -131,11 +131,11 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
         <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
           <div className="flex items-center gap-2 mb-4">
             <Calendar className="text-cyan-400" size={20} />
-            <h2 className="text-white font-semibold text-lg">Your Available Days</h2>
+            <h2 className="text-white font-semibold text-lg">Seus Dias Disponíveis</h2>
           </div>
 
           {barberSlots.length === 0 ? (
-            <p className="text-gray-400 text-center py-8">No available days set yet</p>
+            <p className="text-gray-400 text-center py-8">Nenhum dia disponível definido ainda</p>
           ) : (
             <div className="space-y-3">
               {barberSlots
@@ -149,7 +149,7 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
                     <div>
                       <p className="text-white font-medium mb-1">{formatDate(slot.date)}</p>
                       <p className="text-gray-400 text-sm">
-                        {slot.hours.length} time slots available
+                        {slot.hours.length} horários disponíveis
                       </p>
                       <p className="text-cyan-400 text-xs mt-1">
                         {slot.hours[0]} - {slot.hours[slot.hours.length - 1]}

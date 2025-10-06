@@ -23,11 +23,11 @@ export const ScheduleBarber: React.FC<ScheduleBarberProps> = ({ onNext, onBack }
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">Select a Barber</h1>
+        <h1 className="text-xl font-bold text-white">Selecione um Barbeiro</h1>
       </div>
 
       <div className="p-6">
-        <p className="text-gray-400 mb-6 text-center">Choose your preferred barber for your appointment</p>
+        <p className="text-gray-400 mb-6 text-center">Escolha seu barbeiro preferido para o agendamento</p>
 
         <div className="space-y-4">
           {barbers.map((barber) => (
@@ -81,7 +81,7 @@ export const ScheduleBarber: React.FC<ScheduleBarberProps> = ({ onNext, onBack }
               : 'bg-gray-800 text-gray-500 cursor-not-allowed'
           }`}
         >
-          Continue
+          Continuar
         </button>
       </div>
     </div>

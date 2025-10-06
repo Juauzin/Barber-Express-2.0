@@ -62,18 +62,18 @@ export const MyAppointments: React.FC<MyAppointmentsProps> = ({ onBack }) => {
         <button onClick={onBack} className="text-gray-400 hover:text-white">
           <ChevronLeft size={24} />
         </button>
-        <h1 className="text-xl font-bold text-white">My Appointments</h1>
+  <h1 className="text-xl font-bold text-white">Meus Agendamentos</h1>
       </div>
 
       <div className="p-6">
         {userAppointments.length === 0 ? (
           <div className="text-center py-12">
             <Calendar className="text-gray-600 mx-auto mb-4" size={64} />
-            <h2 className="text-xl font-semibold text-white mb-2">No Appointments Yet</h2>
-            <p className="text-gray-400">Book your first appointment to get started!</p>
+            <h2 className="text-xl font-semibold text-white mb-2">Ainda sem Agendamentos</h2>
+            <p className="text-gray-400">Agende seu primeiro horário para começar!</p>
           </div>
         ) : (
-          <div className="space-y-6">
+      <div className="space-y-6">
             {Object.entries(groupedByMonth).map(([month, monthAppointments]) => (
               <div key={month}>
                 <h2 className="text-lg font-semibold text-white mb-3 sticky top-0 bg-gray-950 py-2">
@@ -100,15 +100,15 @@ export const MyAppointments: React.FC<MyAppointmentsProps> = ({ onBack }) => {
                         </span>
                       </div>
 
-                      <div className="space-y-2 pl-11">
+                            <div className="space-y-2 pl-11">
                         <div className="flex items-center gap-2 text-sm">
                           <User className="text-gray-500" size={16} />
-                          <span className="text-gray-300">Barber:</span>
+                          <span className="text-gray-300">Barbeiro:</span>
                           <span className="text-white font-medium">{getBarberName(appointment.barberId)}</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
                           <Clock className="text-gray-500" size={16} />
-                          <span className="text-gray-300">Service:</span>
+                          <span className="text-gray-300">Serviço:</span>
                           <span className="text-white font-medium">{getServiceName(appointment.serviceId)}</span>
                         </div>
                       </div>

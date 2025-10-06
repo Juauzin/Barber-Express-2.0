@@ -8,11 +8,11 @@ interface BottomNavProps {
 
 export const BottomNav: React.FC<BottomNavProps> = ({ activeView, onNavigate }) => {
   const navItems = [
-    { id: 'home', icon: Home, label: 'Home' },
-    { id: 'appointments', icon: Calendar, label: 'Appointments' },
-    { id: 'schedule-barber', icon: Plus, label: 'Schedule', special: true },
-    { id: 'favorites', icon: Heart, label: 'Favorites' },
-    { id: 'profile', icon: User, label: 'Profile' },
+    { id: 'home', icon: Home, label: 'Início' },
+    { id: 'appointments', icon: Calendar, label: 'Agendamentos' },
+    { id: 'schedule-barber', icon: Plus, label: 'Agendar', special: true },
+    { id: 'favorites', icon: Heart, label: 'Favoritos' },
+    { id: 'profile', icon: User, label: 'Perfil' },
   ];
 
   return (
