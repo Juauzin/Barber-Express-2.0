@@ -84,19 +84,5 @@ Atualmente fiz traduções diretas no código (strings em PT-BR) em várias tela
 - Rode `npm run lint` para verificar problemas de estilo.
 - Rode `npm run typecheck` para garantir tipos TypeScript corretos.
 
-## Próximos passos sugeridos
-- Integrar backend (Supabase) para persistência e autenticação real.
-- Adicionar i18n e extrair strings para arquivos de idiomas.
-- Suporte a pagamentos (Stripe) caso deseje cobrar online.
-- Adicionar testes e CI (GitHub Actions) para build/lint/typecheck automáticos.
-
----
-
-Se quiser, eu posso:
-- Atualizar o README com exemplos de API (endpoints esperados) para conectar com Supabase.
-- Rodar a aplicação localmente aqui e reportar erros (se desejar que eu execute `npm run dev` e analise a saída).
-- Traduzir as datas e locais para PT-BR consistentemente no projeto.
-
-Diga como prefere que eu continue.
 
 
