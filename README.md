@@ -670,29 +670,9 @@ O `AppContext` exporta funções e dados usados pelos componentes. Formas princi
 ## Internacionalização / Tradução
 Atualmente fiz traduções diretas no código (strings em PT-BR) em várias telas. Para escalar traduções no futuro recomendo integrar uma biblioteca de i18n, como `react-i18next` ou `react-intl`, extraindo todas as strings para arquivos de recursos.
 
-## Pontos de atenção e sugestões
-- Estado local: hoje o app armazena tudo no `AppContext` em memória. Para produção você precisará de um backend (por exemplo Supabase, já listado como dependência) e sincronizar as ações (`addAppointment`, `updateAvailableSlots`, `login`, `signUp`).
-- IDs por serviço: no fluxo de agendamento, o app cria um appointment por serviço — avalie se prefere um appointment com múltiplos serviços em vez de múltiplos registros.
-- Testes: adicionar testes unitários (Jest + React Testing Library) para cobrir fluxos críticos.
-- Formatação de datas: atualmente usa `toLocaleDateString('en-US', ...)` em vários lugares — para PT-BR trocar para `pt-BR` para formatação local apropriada.
-
 ## Linter / Typecheck
 - Rode `npm run lint` para verificar problemas de estilo.
 - Rode `npm run typecheck` para garantir tipos TypeScript corretos.
 
-## Próximos passos sugeridos
-- Integrar backend (Supabase) para persistência e autenticação real.
-- Adicionar i18n e extrair strings para arquivos de idiomas.
-- Suporte a pagamentos (Stripe) caso deseje cobrar online.
-- Adicionar testes e CI (GitHub Actions) para build/lint/typecheck automáticos.
-
----
-
-Se quiser, eu posso:
-- Atualizar o README com exemplos de API (endpoints esperados) para conectar com Supabase.
-- Rodar a aplicação localmente aqui e reportar erros (se desejar que eu execute `npm run dev` e analise a saída).
-- Traduzir as datas e locais para PT-BR consistentemente no projeto.
-
-Diga como prefere que eu continue.
 
 
