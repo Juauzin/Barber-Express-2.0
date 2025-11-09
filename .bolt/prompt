@@ -3,3 +3,10 @@ For all designs I ask you to make, have them be beautiful, not cookie cutter. Ma
 By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
 
 Use icons from lucide-react for logos.
+// ------------------------------------------------------------------------------------------------
+PT-BR
+Para todos os designs que eu pedir, criem peças bonitas e originais. Desenvolvam páginas web completas e prontas para publicação.
+
+Por padrão, este modelo suporta a sintaxe JSX com classes CSS do Tailwind, hooks do React e Lucide React para ícones. Não instalem outros pacotes para temas de interface, ícones, etc., a menos que seja absolutamente necessário ou que eu solicite.
+
+Use ícones do Lucide React para os logotipos.
