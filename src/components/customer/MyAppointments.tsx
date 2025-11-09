@@ -1,5 +1,8 @@
+// Importa React para criar componentes funcionais
 import React from 'react';
+// Importa contexto global da aplicação (usuário, agendamentos, barbeiros, serviços)
 import { useApp } from '../../context/AppContext';
+// Importa ícones para exibição visual
 import { Calendar, Clock, User, ChevronLeft } from 'lucide-react';
 
 /**
@@ -8,11 +11,13 @@ import { Calendar, Clock, User, ChevronLeft } from 'lucide-react';
  * Exibe detalhes do barbeiro, serviço, data, hora e status.
  */
 
+// Propriedades esperadas pelo componente: função para voltar
 interface MyAppointmentsProps {
-  onBack: () => void;
+  onBack: () => void; // callback para voltar
 }
 
 export const MyAppointments: React.FC<MyAppointmentsProps> = ({ onBack }) => {
+  // Extrai dados do contexto global
   const { currentUser, appointments, barbers, services } = useApp();
 
   // Filtra todos os agendamentos do cliente logado
@@ -30,6 +35,7 @@ export const MyAppointments: React.FC<MyAppointmentsProps> = ({ onBack }) => {
     return acc;
   }, {} as Record<string, typeof userAppointments>);
 
+  // Ordena agendamentos de cada mês por data/hora (mais recente primeiro)
   Object.keys(groupedByMonth).forEach(key => {
     groupedByMonth[key].sort((a, b) => {
       const dateA = new Date(a.date + ' ' + a.time);
@@ -38,19 +44,23 @@ export const MyAppointments: React.FC<MyAppointmentsProps> = ({ onBack }) => {
     });
   });
 
+  // Função auxiliar para obter nome do barbeiro pelo id
   const getBarberName = (barberId: number) => {
     return barbers.find(b => b.id === barberId)?.name || 'Unknown';
   };
 
+  // Função auxiliar para obter nome do serviço pelo id
   const getServiceName = (serviceId: number) => {
     return services.find(s => s.id === serviceId)?.name || 'Unknown';
   };
 
+  // Função para formatar data para exibição
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', weekday: 'short' });
   };
 
+  // Função para definir cor/status visual do agendamento
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Scheduled':

@@ -1,5 +1,8 @@
+// Importa React para criar componentes funcionais
 import React, { useState } from 'react';
+// Importa contexto global da aplicação (barbeiros)
 import { useApp } from '../../context/AppContext';
+// Importa ícones para navegação
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 /**
@@ -8,38 +11,46 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
  * Exibe cards com foto, nome e avaliação.
  */
 
+// Propriedades esperadas pelo componente: callbacks para avançar e voltar
 interface ScheduleBarberProps {
-  onNext: (barberId: number) => void;
-  onBack: () => void;
+  onNext: (barberId: number) => void; // callback para avançar
+  onBack: () => void; // callback para voltar
 }
 
 export const ScheduleBarber: React.FC<ScheduleBarberProps> = ({ onNext, onBack }) => {
+  // Extrai lista de barbeiros do contexto
   const { barbers } = useApp();
+  // Estado para barbeiro selecionado
   const [selectedBarber, setSelectedBarber] = useState<number | null>(null);
 
+  // Função para continuar para o próximo passo do agendamento
   const handleContinue = () => {
     if (selectedBarber !== null) {
       onNext(selectedBarber);
     }
   };
 
+  // Renderização do componente
   return (
-    <div className="min-h-screen bg-gray-950 pb-24">
+    <div className="min-h-screen bg-gray-950 pb-24"> {/* Altura mínima e padding inferior */}
+      {/* Barra superior com botão de voltar e título */}
       <div className="bg-gray-900 p-4 flex items-center gap-4 border-b border-gray-800">
-        <button onClick={onBack} className="text-gray-400 hover:text-white">
+        <button onClick={onBack} className="text-gray-400 hover:text-white"> {/* Botão de voltar */}
           <ChevronLeft size={24} />
         </button>
         <h1 className="text-xl font-bold text-white">Selecione um Barbeiro</h1>
       </div>
 
+      {/* Bloco principal: lista de barbeiros */}
       <div className="p-6">
         <p className="text-gray-400 mb-6 text-center">Escolha seu barbeiro preferido para o agendamento</p>
 
         <div className="space-y-4">
+          {/* Mapeia cada barbeiro para um card/botão */}
           {barbers.map((barber) => (
             <button
               key={barber.id}
-              onClick={() => setSelectedBarber(barber.id)}
+              onClick={() => setSelectedBarber(barber.id)} // Seleciona barbeiro
               className={`w-full bg-gray-900 rounded-2xl p-5 border-2 transition-all duration-200 ${
                 selectedBarber === barber.id
                   ? 'border-cyan-500 bg-cyan-500/10'
@@ -56,6 +67,7 @@ export const ScheduleBarber: React.FC<ScheduleBarberProps> = ({ onNext, onBack }
                   <h3 className="text-white font-semibold text-lg mb-1">{barber.name}</h3>
                   <div className="flex items-center gap-2">
                     <div className="flex items-center">
+                      {/* Renderiza estrelas de avaliação (exemplo visual) */}
                       {[...Array(5)].map((_, i) => (
                         <span
                           key={i}

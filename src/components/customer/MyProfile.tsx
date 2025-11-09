@@ -1,5 +1,8 @@
+// Importa React para criar componentes funcionais
 import React from 'react';
+// Importa contexto global da aplicação (usuário, logout)
 import { useApp } from '../../context/AppContext';
+// Importa ícones para exibição visual
 import { ChevronLeft, ChevronRight, User, Mail, Lock, Bell, LogOut } from 'lucide-react';
 
 /**
@@ -8,40 +11,46 @@ import { ChevronLeft, ChevronRight, User, Mail, Lock, Bell, LogOut } from 'lucid
  * Permite logout e navegação de volta.
  */
 
+// Propriedades esperadas pelo componente: função para voltar
 interface MyProfileProps {
-  onBack: () => void;
+  onBack: () => void; // callback para voltar
 }
 
 export const MyProfile: React.FC<MyProfileProps> = ({ onBack }) => {
+  // Extrai dados do contexto global
   const { currentUser, logout } = useApp();
 
+  // Lista de itens do menu de perfil (edição, senha, notificações)
   const menuItems = [
     { icon: User, label: 'Editar Perfil', action: () => alert('Recurso de editar perfil em breve!') },
     { icon: Lock, label: 'Alterar Senha', action: () => alert('Recurso de alterar senha em breve!') },
     { icon: Bell, label: 'Notificações', action: () => alert('Recurso de notificações em breve!') },
   ];
 
+  // Renderização do componente
   return (
-    <div className="min-h-screen bg-gray-950 pb-24">
+    <div className="min-h-screen bg-gray-950 pb-24"> {/* Altura mínima e padding inferior */}
+      {/* Barra superior com botão de voltar e título */}
       <div className="bg-gray-900 p-4 flex items-center gap-4 border-b border-gray-800">
-        <button onClick={onBack} className="text-gray-400 hover:text-white">
+        <button onClick={onBack} className="text-gray-400 hover:text-white"> {/* Botão de voltar */}
           <ChevronLeft size={24} />
         </button>
-  <h1 className="text-xl font-bold text-white">Meu Perfil</h1>
+        <h1 className="text-xl font-bold text-white">Meu Perfil</h1>
       </div>
 
+      {/* Bloco de dados pessoais do usuário */}
       <div className="p-6 space-y-6">
         <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-800">
           <div className="flex items-center gap-4">
             <img
-              src={currentUser?.photoUrl || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200'}
+              src={currentUser?.photoUrl || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200'} // Foto do usuário
               alt={currentUser?.name}
               className="w-20 h-20 rounded-full object-cover border-4 border-cyan-500"
             />
             <div className="flex-1">
               <h2 className="text-xl font-bold text-white mb-1">{currentUser?.name}</h2>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Mail size={16} />
+                <Mail size={16} /> {/* Ícone de email */}
                 <span>{currentUser?.email}</span>
               </div>
               {currentUser?.phone && (
@@ -51,6 +60,7 @@ export const MyProfile: React.FC<MyProfileProps> = ({ onBack }) => {
           </div>
         </div>
 
+        {/* Bloco de opções do menu de perfil */}
         <div className="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
           {menuItems.map((item, index) => {
             const Icon = item.icon;

@@ -1,4 +1,6 @@
+// Importa React para criar componentes funcionais
 import React from 'react';
+// Importa ícones para navegação e exibição visual
 import { ChevronLeft, Heart } from 'lucide-react';
 
 /**
@@ -7,24 +9,28 @@ import { ChevronLeft, Heart } from 'lucide-react';
  * Permite navegação de volta para a tela inicial.
  */
 
+// Propriedades esperadas pelo componente: função para voltar
 interface FavoritesProps {
-  onBack: () => void;
+  onBack: () => void; // callback para voltar
 }
 
 export const Favorites: React.FC<FavoritesProps> = ({ onBack }) => {
+  // Renderização do componente
   return (
-    <div className="min-h-screen bg-gray-950 pb-24">
+    <div className="min-h-screen bg-gray-950 pb-24"> {/* Altura mínima e padding inferior */}
+      {/* Barra superior com botão de voltar e título */}
       <div className="bg-gray-900 p-4 flex items-center gap-4 border-b border-gray-800">
-        <button onClick={onBack} className="text-gray-400 hover:text-white">
+        <button onClick={onBack} className="text-gray-400 hover:text-white"> {/* Botão de voltar */}
           <ChevronLeft size={24} />
         </button>
-  <h1 className="text-xl font-bold text-white">Favoritos</h1>
+        <h1 className="text-xl font-bold text-white">Favoritos</h1>
       </div>
 
+      {/* Conteúdo principal: lista de favoritos ou mensagem de vazio */}
       <div className="p-6">
         <div className="text-center py-12">
           <div className="bg-gray-900 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
-            <Heart className="text-gray-600" size={48} />
+            <Heart className="text-gray-600" size={48} /> {/* Ícone de coração */}
           </div>
           <h2 className="text-xl font-semibold text-white mb-2">Ainda sem Favoritos</h2>
           <p className="text-gray-400">

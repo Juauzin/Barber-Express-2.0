@@ -1,6 +1,10 @@
+// Importa React para criar componentes funcionais
 import React from 'react';
+// Importa contexto global da aplicação (barbeiros)
 import { useApp } from '../../context/AppContext';
+// Importa ícones para exibição visual
 import { ChevronLeft, Calendar, Clock, Scissors, DollarSign } from 'lucide-react';
+// Importa tipo Service para tipagem dos serviços
 import { Service } from '../../types';
 
 /**
@@ -9,13 +13,14 @@ import { Service } from '../../types';
  * Permite voltar para editar ou confirmar o agendamento.
  */
 
+// Propriedades esperadas pelo componente: dados do agendamento e callbacks
 interface ScheduleSummaryProps {
-  barberId: number;
-  date: string;
-  time: string;
-  selectedServices: Service[];
-  onConfirm: () => void;
-  onBack: () => void;
+  barberId: number; // id do barbeiro
+  date: string; // data do agendamento
+  time: string; // horário do agendamento
+  selectedServices: Service[]; // lista de serviços selecionados
+  onConfirm: () => void; // callback para confirmar
+  onBack: () => void; // callback para voltar
 }
 
 export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
@@ -26,11 +31,16 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
   onConfirm,
   onBack,
 }) => {
+  // Extrai lista de barbeiros do contexto
   const { barbers } = useApp();
+  // Busca barbeiro pelo id
   const barber = barbers.find(b => b.id === barberId);
+  // Soma total dos preços dos serviços
   const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
+  // Soma total da duração dos serviços
   const totalDuration = selectedServices.reduce((sum, s) => sum + s.durationMinutes, 0);
 
+  // Função para formatar data para exibição
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -41,15 +51,18 @@ export const ScheduleSummary: React.FC<ScheduleSummaryProps> = ({
     });
   };
 
+  // Renderização do componente
   return (
-    <div className="min-h-screen bg-gray-950 pb-24">
+    <div className="min-h-screen bg-gray-950 pb-24"> {/* Altura mínima e padding inferior */}
+      {/* Barra superior com botão de voltar e título */}
       <div className="bg-gray-900 p-4 flex items-center gap-4 border-b border-gray-800">
-        <button onClick={onBack} className="text-gray-400 hover:text-white">
+        <button onClick={onBack} className="text-gray-400 hover:text-white"> {/* Botão de voltar */}
           <ChevronLeft size={24} />
         </button>
-  <h1 className="text-xl font-bold text-white">Resumo</h1>
+        <h1 className="text-xl font-bold text-white">Resumo</h1>
       </div>
 
+      {/* Bloco principal: resumo do agendamento */}
       <div className="p-6 space-y-6">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-white mb-2">Revise Seu Agendamento</h2>
