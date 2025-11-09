@@ -1,3 +1,8 @@
+// Configuração do ESLint para o projeto Barber-Express
+// - Usa regras recomendadas para JS, TypeScript e React
+// - Plugins para hooks e fast refresh
+// - Ignora pasta dist
+// - Aplica regras extras para exportação de componentes
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';

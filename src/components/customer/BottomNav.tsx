@@ -1,12 +1,19 @@
 import React from 'react';
 import { Home, Calendar, Plus, Heart, User } from 'lucide-react';
 
+/**
+ * Barra de Navegação Inferior do Cliente
+ * Permite alternar entre as principais telas do app do cliente.
+ * Ícone central especial para agendamento rápido.
+ */
+
 interface BottomNavProps {
   activeView: string;
   onNavigate: (view: string) => void;
 }
 
 export const BottomNav: React.FC<BottomNavProps> = ({ activeView, onNavigate }) => {
+  // Lista de itens de navegação (id, ícone, rótulo, se é especial)
   const navItems = [
     { id: 'home', icon: Home, label: 'Início' },
     { id: 'appointments', icon: Calendar, label: 'Agendamentos' },
@@ -16,6 +23,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeView, onNavigate }) 
   ];
 
   return (
+    // Renderiza barra fixa na parte inferior da tela
     <div className="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800 px-4 py-3 z-40">
       <div className="flex justify-around items-center max-w-lg mx-auto">
         {navItems.map((item) => {

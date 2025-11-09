@@ -3,6 +3,12 @@ import { useApp } from '../../context/AppContext';
 import { ChevronLeft, Calendar } from 'lucide-react';
 import { Service } from '../../types';
 
+/**
+ * Passo 2 do Agendamento: Seleção de Data, Horário e Serviços
+ * Permite escolher data, horário disponível e serviços desejados para o barbeiro selecionado.
+ * Exibe validação de disponibilidade e preço total.
+ */
+
 interface ScheduleDateTimeProps {
   barberId: number;
   onNext: (date: string, time: string, selectedServices: Service[]) => void;

@@ -2,6 +2,12 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react';
 
+/**
+ * Painel de Agenda do Barbeiro
+ * Exibe os agendamentos futuros agrupados por data, com detalhes do cliente e serviço.
+ * Permite alternar para gerenciamento de disponibilidade.
+ */
+
 interface BarberScheduleProps {
   onManageSchedule: () => void;
 }
@@ -9,6 +15,7 @@ interface BarberScheduleProps {
 export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule }) => {
   const { currentUser, appointments, users, services } = useApp();
 
+  // Filtra e ordena os agendamentos do barbeiro logado
   const barberAppointments = appointments
     .filter(app => app.barberId === currentUser?.id && app.status === 'Scheduled')
     .sort((a, b) => {
@@ -17,6 +24,7 @@ export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule
       return dateA.getTime() - dateB.getTime();
     });
 
+  // Agrupa agendamentos por data para exibição em blocos
   const groupedByDate = barberAppointments.reduce((acc, appointment) => {
     const date = appointment.date;
     if (!acc[date]) {
@@ -26,6 +34,7 @@ export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule
     return acc;
   }, {} as Record<string, typeof barberAppointments>);
 
+  // Funções auxiliares para exibir nomes e datas formatadas
   const getCustomerName = (customerId: number) => {
     return users.find(u => u.id === customerId)?.name || 'Unknown';
   };
@@ -36,7 +45,7 @@ export const BarberSchedule: React.FC<BarberScheduleProps> = ({ onManageSchedule
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('pt-BR', {
       weekday: 'long',
       month: 'long',
       day: 'numeric',

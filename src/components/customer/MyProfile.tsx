@@ -2,6 +2,12 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { ChevronLeft, ChevronRight, User, Mail, Lock, Bell, LogOut } from 'lucide-react';
 
+/**
+ * Tela de Perfil do Cliente
+ * Exibe dados pessoais, foto, e opções futuras de edição/configuração.
+ * Permite logout e navegação de volta.
+ */
+
 interface MyProfileProps {
   onBack: () => void;
 }

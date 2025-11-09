@@ -1,6 +1,12 @@
 import React from 'react';
 import { ChevronLeft, Heart } from 'lucide-react';
 
+/**
+ * Tela de Favoritos do Cliente
+ * Exibe barbeiros e serviços marcados como favoritos.
+ * Permite navegação de volta para a tela inicial.
+ */
+
 interface FavoritesProps {
   onBack: () => void;
 }

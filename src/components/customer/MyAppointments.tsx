@@ -2,6 +2,12 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Calendar, Clock, User, ChevronLeft } from 'lucide-react';
 
+/**
+ * Tela de Meus Agendamentos
+ * Lista todos os agendamentos do cliente agrupados por mês.
+ * Exibe detalhes do barbeiro, serviço, data, hora e status.
+ */
+
 interface MyAppointmentsProps {
   onBack: () => void;
 }
@@ -9,11 +15,13 @@ interface MyAppointmentsProps {
 export const MyAppointments: React.FC<MyAppointmentsProps> = ({ onBack }) => {
   const { currentUser, appointments, barbers, services } = useApp();
 
+  // Filtra todos os agendamentos do cliente logado
   const userAppointments = appointments.filter(app => app.customerId === currentUser?.id);
 
+  // Agrupa agendamentos por mês/ano para exibição
   const groupedByMonth = userAppointments.reduce((acc, appointment) => {
     const date = new Date(appointment.date);
-    const monthYear = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const monthYear = date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 
     if (!acc[monthYear]) {
       acc[monthYear] = [];

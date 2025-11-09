@@ -1,6 +1,11 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 
+/**
+ * Passo 4 do Agendamento: Confirmação de Sucesso
+ * Exibe mensagem positiva e opções para ver agendamentos ou voltar ao início.
+ */
+
 interface ScheduleSuccessProps {
   onViewAppointments: () => void;
   onGoHome: () => void;

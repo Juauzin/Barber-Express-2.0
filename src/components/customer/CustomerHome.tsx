@@ -2,6 +2,12 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Clock, Calendar, Tag } from 'lucide-react';
 
+/**
+ * Tela Inicial do Cliente
+ * Exibe saudação, horário comercial, próximo agendamento e ofertas especiais.
+ * Permite iniciar fluxo de agendamento.
+ */
+
 interface CustomerHomeProps {
   onNavigate: (view: string) => void;
 }
@@ -9,13 +15,16 @@ interface CustomerHomeProps {
 export const CustomerHome: React.FC<CustomerHomeProps> = ({ onNavigate }) => {
   const { currentUser, appointments, barbers, services } = useApp();
 
+  // Filtra agendamentos futuros do cliente logado
   const userAppointments = appointments.filter(
     app => app.customerId === currentUser?.id && app.status === 'Scheduled'
   );
 
+  // Seleciona o próximo agendamento do cliente
   const nextAppointment = userAppointments
     .sort((a, b) => new Date(a.date + ' ' + a.time).getTime() - new Date(b.date + ' ' + b.time).getTime())[0];
 
+  // Funções auxiliares para exibir nomes e datas formatadas
   const getBarberName = (barberId: number) => {
     return barbers.find(b => b.id === barberId)?.name || 'Unknown';
   };
@@ -26,7 +35,7 @@ export const CustomerHome: React.FC<CustomerHomeProps> = ({ onNavigate }) => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return date.toLocaleDateString('pt-BR', { month: 'short', day: 'numeric', year: 'numeric' });
   };
 
   return (

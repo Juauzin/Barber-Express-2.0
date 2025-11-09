@@ -1,3 +1,8 @@
+/*
+	Arquivo principal de estilos do projeto
+	- Importa diretivas do Tailwind CSS para base, componentes e utilitários
+	- Permite adicionar estilos globais customizados abaixo
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

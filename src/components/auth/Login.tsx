@@ -2,23 +2,29 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Mail, Lock } from 'lucide-react';
 
+/**
+ * Tela de Login
+ * Permite autenticar um usuário existente via e-mail e senha.
+ * Mostra feedback de erro e permite alternar para cadastro.
+ */
+
 interface LoginProps {
   onSwitchToSignUp: () => void;
 }
 
 export const Login: React.FC<LoginProps> = ({ onSwitchToSignUp }) => {
-  const { login } = useApp();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const { login } = useApp(); // função de autenticação do contexto
+  const [email, setEmail] = useState(''); // estado do campo de e-mail
+  const [password, setPassword] = useState(''); // estado do campo de senha
+  const [error, setError] = useState(''); // mensagem de erro exibida no topo do formulário
 
+  // Handler do submit: evita reload, limpa erro antigo e tenta autenticar.
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-
     const user = login(email, password);
     if (!user) {
-      setError('E-mail ou senha inválidos');
+      setError('E-mail ou senha inválidos'); // define mensagem exibida acima do form
     }
   };
 
@@ -26,11 +32,14 @@ export const Login: React.FC<LoginProps> = ({ onSwitchToSignUp }) => {
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
+          {/* Título principal da tela */}
           <h1 className="text-3xl font-bold text-white mb-2">Bem-vindo de volta</h1>
+          {/* Subtexto orientando a próxima ação */}
           <p className="text-gray-400">Faça login para continuar</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-gray-900 rounded-2xl p-8 shadow-xl">
+          {/* Exibe erro quando as credenciais são inválidas */}
           {error && (
             <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
               {error}
@@ -67,6 +76,7 @@ export const Login: React.FC<LoginProps> = ({ onSwitchToSignUp }) => {
             </div>
           </div>
 
+          {/* Botão principal de login */}
           <button
             type="submit"
             className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition-colors duration-200 mb-4"
@@ -74,6 +84,7 @@ export const Login: React.FC<LoginProps> = ({ onSwitchToSignUp }) => {
             Entrar
           </button>
 
+          {/* Link para alternar para a tela de cadastro */}
           <div className="text-center">
             <button
               type="button"
@@ -84,6 +95,7 @@ export const Login: React.FC<LoginProps> = ({ onSwitchToSignUp }) => {
             </button>
           </div>
 
+          {/* Contas de demonstração para testes rápidos */}
           <div className="mt-6 pt-6 border-t border-gray-800">
             <p className="text-gray-400 text-xs text-center mb-3">Contas de demonstração:</p>
             <div className="text-gray-500 text-xs space-y-1">

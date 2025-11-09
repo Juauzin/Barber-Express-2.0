@@ -3,6 +3,12 @@ import { useApp } from '../../context/AppContext';
 import { ChevronLeft, Calendar, Clock, Scissors, DollarSign } from 'lucide-react';
 import { Service } from '../../types';
 
+/**
+ * Passo 3 do Agendamento: Resumo e Confirmação
+ * Exibe todos os detalhes do agendamento antes de confirmar.
+ * Permite voltar para editar ou confirmar o agendamento.
+ */
+
 interface ScheduleSummaryProps {
   barberId: number;
   date: string;

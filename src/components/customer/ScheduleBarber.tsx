@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+/**
+ * Passo 1 do Agendamento: Seleção de Barbeiro
+ * Permite escolher um barbeiro para iniciar o fluxo de agendamento.
+ * Exibe cards com foto, nome e avaliação.
+ */
+
 interface ScheduleBarberProps {
   onNext: (barberId: number) => void;
   onBack: () => void;

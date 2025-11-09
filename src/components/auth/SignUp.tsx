@@ -2,19 +2,26 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Mail, Lock, User, Phone, Check, X } from 'lucide-react';
 
+/**
+ * Tela de Cadastro (SignUp)
+ * Permite criar uma nova conta de cliente, validando senha e dados básicos.
+ * Exibe requisitos de senha e feedback de erro.
+ */
+
 interface SignUpProps {
   onSwitchToLogin: () => void;
 }
 
 export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
-  const { signUp } = useApp();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const { signUp } = useApp(); // função de cadastro do contexto
+  const [name, setName] = useState(''); // nome completo do usuário
+  const [email, setEmail] = useState(''); // e-mail do usuário
+  const [phone, setPhone] = useState(''); // telefone do usuário
+  const [password, setPassword] = useState(''); // senha digitada
+  const [confirmPassword, setConfirmPassword] = useState(''); // confirmação da senha
+  const [error, setError] = useState(''); // mensagem de erro exibida
 
+  // Requisitos de senha para validação visual
   const passwordRequirements = {
     minLength: password.length >= 8,
     hasLetter: /[a-zA-Z]/.test(password),
@@ -22,8 +29,10 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
     hasSpecial: /[!@#$%^&*(),.?":{}|<>]/.test(password),
   };
 
+  // Senha válida apenas se todos os requisitos forem atendidos
   const isPasswordValid = Object.values(passwordRequirements).every(Boolean);
 
+  // Handler do submit: valida senha, confirma senha e tenta cadastro.
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -40,10 +49,11 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
 
     const user = signUp(name, email, phone, password);
     if (!user) {
-      setError('Email already registered');
+      setError('Email já cadastrado');
     }
   };
 
+  // Componente auxiliar para exibir cada requisito de senha
   const RequirementItem: React.FC<{ met: boolean; text: string }> = ({ met, text }) => (
     <div className={`flex items-center gap-2 text-sm ${met ? 'text-green-400' : 'text-gray-500'}`}>
       {met ? <Check size={16} /> : <X size={16} />}
@@ -55,12 +65,15 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
+          {/* Título principal da tela de cadastro */}
           <h1 className="text-3xl font-bold text-white mb-2">Criar Conta</h1>
+          {/* Subtexto convidando o usuário */}
           <p className="text-gray-400">Junte-se a nós hoje</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-gray-900 rounded-2xl p-8 shadow-xl">
           {error && (
+            // Exibe mensagem de erro caso haja falha na validação ou cadastro
             <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
               {error}
             </div>
@@ -149,6 +162,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
             </div>
           </div>
 
+          {/* Botão principal para criar conta */}
           <button
             type="submit"
             className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition-colors duration-200 mb-4"
@@ -157,6 +171,7 @@ export const SignUp: React.FC<SignUpProps> = ({ onSwitchToLogin }) => {
           </button>
 
           <div className="text-center">
+            {/* Botão para alternar para tela de login */}
             <button
               type="button"
               onClick={onSwitchToLogin}

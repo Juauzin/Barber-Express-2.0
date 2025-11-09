@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { ChevronLeft, Calendar, Plus, Trash2 } from 'lucide-react';
 
+/**
+ * Tela de Gerenciamento de Disponibilidade do Barbeiro
+ * Permite adicionar, visualizar e remover dias/horários disponíveis para agendamento.
+ */
+
 interface ManageScheduleProps {
   onBack: () => void;
 }
@@ -12,8 +17,10 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
   const [startTime, setStartTime] = useState('08:00');
   const [endTime, setEndTime] = useState('18:00');
 
+  // Filtra os slots disponíveis do barbeiro logado
   const barberSlots = availableSlots.filter(slot => slot.barberId === currentUser?.id);
 
+  // Gera array de horários entre início e fim (ex.: 08:00 até 18:00)
   const generateTimeSlots = (start: string, end: string): string[] => {
     const slots: string[] = [];
     const startHour = parseInt(start.split(':')[0]);
@@ -26,6 +33,7 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
     return slots;
   };
 
+  // Adiciona um novo dia disponível para o barbeiro
   const handleAddSchedule = () => {
     if (!selectedDate || !currentUser) return;
 
@@ -34,15 +42,17 @@ export const ManageSchedule: React.FC<ManageScheduleProps> = ({ onBack }) => {
     setSelectedDate('');
   };
 
+  // Remove todos os horários de um dia específico
   const handleRemoveSchedule = (date: string) => {
     if (currentUser) {
       updateAvailableSlots(currentUser.id, date, []);
     }
   };
 
+  // Formata data para exibição amigável
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('pt-BR', {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
