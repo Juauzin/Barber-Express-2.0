@@ -9,12 +9,28 @@ import { ManageSchedule } from './barber/ManageSchedule';
 
 // Importa o componente do botão flutuante de IA.
 import { AIFloatingButton } from './AIFloatingButton';
+import { MyProfile } from './customer/MyProfile';
+import { BarberBottomNav } from './barber/BarberBottomNav';
+
 
 // Exporta e define o componente principal 'BarberApp' como um Componente Funcional (FC).
 export const BarberApp: React.FC = () => {
   // Cria uma variável de estado chamada 'view' e uma função 'setView' para atualizá-la.
   // O valor inicial de 'view' é 'schedule'.
-  const [view, setView] = useState<'schedule' | 'manage'>('schedule');
+  const [view, setView] = useState<'schedule' | 'manage' | 'profile'>('schedule');
+
+  const renderView = () => {
+    switch (view) {
+      case 'schedule':
+        return <BarberSchedule onManageSchedule={() => setView('manage')} />;
+      case 'manage':
+        return <ManageSchedule onBack={() => setView('schedule')} />;
+      case 'profile':
+        return <MyProfile onBack={() => setView('schedule')} />;
+      default:
+        return <BarberSchedule onManageSchedule={() => setView('manage')} />;
+    }
+  };
 
   // Retorna o código JSX (a interface) que o componente irá renderizar.
   return (
@@ -22,17 +38,11 @@ export const BarberApp: React.FC = () => {
     // As classes do Tailwind definem altura mínima da tela (min-h-screen) e um fundo escuro (bg-gray-950).
     <div className="min-h-screen bg-gray-950">
 
-      {/* Inicia uma renderização condicional (operador ternário). */}
-      {view === 'schedule' ? (
-        // SE(IF) o estado 'view' for 'schedule', renderiza o componente 'BarberSchedule'.
-        // Passa uma prop 'onManageSchedule' que, quando chamada, muda o estado para 'manage'.
-        <BarberSchedule onManageSchedule={() => setView('manage')} />
-      ) : (
-        // SENÃO(ELSE), renderiza o componente 'ManageSchedule'.
-        // Passa uma prop 'onBack' que, quando chamada, muda o estado de volta para 'schedule'.
-        <ManageSchedule onBack={() => setView('schedule')} />
-      )}
-      {/* Fim da renderização condicional. */}
+      {/* Renderização da view atual */}
+      {renderView()}
+
+      {/* Barra de navegação inferior do barbeiro */}
+      <BarberBottomNav activeView={view} onNavigate={setView} />
 
       {/* Renderiza o componente 'AIFloatingButton'. */}
       {/* Ele está fora da condicional, então aparece nas duas telas ('schedule' e 'manage'). */}
